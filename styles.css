@@ -1,0 +1,19 @@
+#temp{
+    font-size: xx-large;
+    font-weight: bolder;
+}
+
+
+#degree{
+    font-size: xx-large;
+    font-weight: bolder;
+}
+
+.cool{
+    align-items: center;
+}
+.symbol{
+    position: relative;
+    left: 220px;
+
+}

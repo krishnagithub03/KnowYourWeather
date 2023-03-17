@@ -1,21 +1,31 @@
+var mykey = config.MY_API_TOKEN;
+var secretkey = config.SECRET_API_KEY;
 const options = {
 	method: 'GET',
 	headers: {
-		'X-RapidAPI-Key': '6f86c1a30cmsh7e083240c5c9ec3p1468aejsn35327a9a08cc',
-		'X-RapidAPI-Host': 'weather-by-api-ninjas.p.rapidapi.com'
+		'X-RapidAPI-Key': secretkey,
+		'X-RapidAPI-Host': mykey,
 	}
 };
+function printInput() {
+    const input = document.getElementById("inputField").value;
+    const output = document.getElementById("output");
+    output.innerHTML = input;
+}
+  
+const getWeather = (inputField) => {
+	// const name = document.getElementById("place");
+	// name.innerHTML = city
 
-const getWeather = (city) => {
-
-	cityName.innerHTML = city
-
-	fetch('https://weather-by-api-ninjas.p.rapidapi.com/v1/weather?city=' + city, options)
+	// document.addEventListener("DOMContentLoaded", function() {
+	// 	const name = document.getElementById("place");
+	// 	name.innerHTML = city;	
+	//   });
+	fetch('https://weather-by-api-ninjas.p.rapidapi.com/v1/weather?city='+ inputField, options)
 		.then(response => response.json())
 		.then(response => {
 			console.log(response)
-
-			cloud_pct.innerHTML = response.cloud_pct
+            cloud_pct.innerHTML = response.cloud_pct
 			temp.innerHTML = response.temp
 			feels_like.innerHTML = response.feels_like
 			humidity.innerHTML = response.humidity
@@ -29,10 +39,19 @@ const getWeather = (city) => {
 		.catch(err => console.error(err));
 
 }
+// const final = document.getElementById("submitMessage");
+// final.addEventListener("submit", (e)=>{
+// 	e.preventDefault()
+// 	getWeather(city.value)
+// });
 
-submitMessage.addEventListener("click", (event)=>{
-	event.preventDefault()
-	getWeather(city.value)
-});
+document.addEventListener("DOMContentLoaded", function() {
+	const element = document.getElementById("submitMessage");
+	element.addEventListener("click",(e)=> {
+		e.preventDefault()
+		getWeather(inputField.value)
+	});
+  });
+  
 
-getWeather("Delhi")
+// getWeather("Delhi")
